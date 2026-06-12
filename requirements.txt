@@ -12,4 +12,6 @@ docx2txt
 sentence-transformers
 supabase
 python-dotenv
-python-multipart
+fastapi
+uvicorn
+requests
