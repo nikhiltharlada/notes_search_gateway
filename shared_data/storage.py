@@ -12,7 +12,7 @@ def upload_file(local_path, remote_path):
         result = supabase.storage.from_(BUCKET).upload(
             remote_path,
             f.read(),
-            {"upsert": True}
+            {"upsert":"true"}
         )
 
         print("UPLOAD RESULT =", result)
