@@ -3,19 +3,25 @@ from shared_data.supabase_client import supabase, BUCKET
 
 def upload_file(local_path, remote_path):
 
-    print("BUCKET =", BUCKET)
-    print("LOCAL FILE =", local_path)
-    print("REMOTE FILE =", remote_path)
+    try:
+        print("BUCKET =", BUCKET)
+        print("LOCAL FILE =", local_path)
+        print("REMOTE FILE =", remote_path)
 
-    with open(local_path, "rb") as f:
+        with open(local_path, "rb") as f:
 
-        result = supabase.storage.from_(BUCKET).upload(
-            remote_path,
-            f.read(),
-            {"upsert":"true"}
-        )
+            result = supabase.storage.from_(BUCKET).upload(
+                remote_path,
+                f.read(),
+                {"upsert": "true"}
+            )
 
-        print("UPLOAD RESULT =", result)
+            print("RESULT =", result)
+
+    except Exception as e:
+        import traceback
+        print(traceback.format_exc())
+        raise e
 
 def download_file(remote_path, local_path):
 
