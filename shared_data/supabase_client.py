@@ -17,4 +17,6 @@ supabase = create_client(
 
 BUCKET = os.getenv("BUCKET_NAME")
 
+print("SUPABASE_URL =", SUPABASE_URL)
+print("SUPABASE_KEY EXISTS =", SUPABASE_KEY is not None)
 print("BUCKET =", BUCKET)
