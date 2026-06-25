@@ -95,9 +95,12 @@ def delete_files():
     }
 @app.get("/files")
 def files():
+    try:
+        files = list_files("uploads")
 
-    files = list_files("uploads")
+        filenames = [file["name"] for file in files]
 
-    return {
-        "files": files
-    }
+        return {"files": filenames}
+
+    except Exception as e:
+        return {"error": str(e)}
